@@ -135,19 +135,7 @@ def pca(anomalies,coords_to_stack):
 
     ds = xr.Dataset({'pc':pc,'eof':eof,'expl':expl})
 
-    return ds
-
-
-
-def projection(sample,eof):
-    
-    weights = np.cos(np.radians(sample.lat))
-    series = (eof * sample * weights).sum(('lat','lon'))
-    norm = (eof ** 2 * weights).sum(('lat','lon'))
-    series = series / norm
-
-    return series
-    
+    return ds    
 
 
 
